@@ -44,7 +44,7 @@ body {
 .banner .container {
   height: 70vh;
   width: 100%;
-  background-image: url("../assets/imgs/baner.jfif");
+  background-image: url("../assets/imgs/home/baner.jpeg");
   background-size: cover;
 }
 
@@ -55,7 +55,7 @@ body {
   width: 100%;
   height: 60vh;
   color: #e3b062;
-  background-image: url("../assets/imgs/imagem_fundo.gif");
+  background-image: url("../assets/imgs/home/fundo.gif");
   background-size: cover;
   border-top: 3px solid rgba(255, 217, 0, 0.548);  
 }
@@ -71,16 +71,15 @@ body {
   padding: 0;
   width: 100%;
   color: #e3b062;
-  background-image: url("../assets/imgs/vagalumes.jpeg");
+  background-image: url("../assets/imgs/home/vagalumes.jpeg");
   background-size: cover;
-  border-bottom: 3px solid rgba(255, 217, 0, 0.548);
 }
 
 .fedra{
   padding: 0;
   width: 100%;
   color: #e3b062;
-  background-image: url("../assets/imgs/fedra.jpeg");
+  background-image: url("../assets/imgs/home/fedra.jpeg");
   background-size: cover;
   border-bottom: 3px solid rgba(255, 217, 0, 0.548);
 }
@@ -89,9 +88,9 @@ body {
 /* FOOTER */
 
 footer .container{
-  background-color: #212124;
-  width: 20%;
-  background-image: url("./assets/imgs/footer.jpg");
+  padding: 5px;
+  font-size: 15px !important;
+  display: inline !important;
 }
 
 
@@ -102,21 +101,48 @@ footer .container{
 }
 
 .musica .container {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
-  background-image: url("../assets/imgs/img_tela_musica.jpeg");
+  background-image: url("../assets/imgs/musica/img_tela_musica.jpeg");
   background-size: cover;
 }
 
 /* LOGIN */
+main {
+  display: flex;
+  height: 120vh;
+}
 
-.banner .container .card {
-  background-color: #e5e5e5;
-  height: fit-content;
+.tela{
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/imgs/login_cadastro/login.jpg);
+  background-position: center;
+  background-repeat: no-repeat  ;
+  background-size: cover;
+}
+.tela .container .card {
+  margin-top: 200px;
+  margin-left: 100px;
+  background-color: #212124;
   width: 400px;
+  height: 360px;
   display: flex;
   flex-direction: column;
-  color: palevioletred;
+  color: #e3b062;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.tela .container .card_medio {
+  margin-top: 200px;
+  margin-left: 80px;
+  background-color: #212124;
+  width: 460px;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  color: #e3b062;
   align-items: center;
   border-radius: 4px;
 }
@@ -134,8 +160,21 @@ footer .container{
   font-size: 16px;
 }
 
+.card_medio {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card_medio h2 {
+  font-size: 30px;
+}
+
+.card_medio h4 {
+  font-size: 16px;
+}
+
 .banner #div_erros_login {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 button {
