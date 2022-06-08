@@ -19,7 +19,7 @@
     <!--header inicio-->
      <div class="header">
         <div class="container">
-            <h1 id="titulo"><img src="./assets/imgs/logo_header.png" style="width: 250px;"></h1>
+            <h1 id="titulo"><img src="./assets/imgs/logo_header.png" style="width: 250px; padding: 5px;"></h1>
 
             <ul class="navbar">
                 <li class="agora">
@@ -72,6 +72,15 @@
                     <span class="tipo_campo">Confirmação da Senha:</span>
                     <input id="confirmacao_senha_input" type="password" placeholder="******">
 
+                    <span class="tipo_campo">Em qual facção você deseja entrar?</span>
+                    <select id="sel_faccao">
+                        <option hidden value="">---</option>
+                        <option value="1">Vagalumes</option>
+                        <option value="2">Fedra</option>
+                        <option value="3">WLF</option>
+                        <option value="4">Serafitas</option>
+                    </select>
+
                     <button class="btn" onclick="cadastrar()">Cadastrar</button>
 
                 </div>
@@ -101,8 +110,9 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var fkVotacaoVar = sel_faccao.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || fkVotacaoVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -124,7 +134,9 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                fkVotacaoServer: fkVotacaoVar
+
             })
         }).then(function (resposta) {
 

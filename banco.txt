@@ -1,0 +1,30 @@
+CREATE DATABASE theLast;
+
+USE theLast;
+
+CREATE TABLE usuario (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50),
+	email VARCHAR(50),
+	senha VARCHAR(50),
+    fkvotacao INT,
+	FOREIGN KEY (fkVotacao) REFERENCES votacao(idVotacao)
+);
+
+CREATE TABLE votacao (
+	idVotacao INT PRIMARY KEY AUTO_INCREMENT,
+	faccao VARCHAR(30)
+);
+
+insert into votacao values 
+	(null, 'Vagalumes')
+    ,(null, 'Fedra')
+    ,(null, 'WLF')
+    ,(null, 'Serafitas');
+
+insert into usuario values
+	(null, 'Renato', 'renato@gmail.com', 'cellbit', 4);
+    
+select count(fkVotacao) Qtde_Votos, faccao from votacao,usuario where fkVotacao = idVotacao group by fkVotacao;
+
+drop database theLast;

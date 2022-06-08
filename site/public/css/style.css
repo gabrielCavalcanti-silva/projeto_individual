@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -89,18 +90,23 @@ body {
 
 
 /* FOOTER */
-
 footer{
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: black;
+  color: #e3b062;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
 }
 
-footer .container{
-  padding: 1px;
-  font-size: 15px !important;
-  display: inline !important;
+a{
+  text-decoration: none;
+  color: #e3b062;
 }
 
+a:hover{
+  color: #e6005a;
+}
 
 /* MUSICAS */
 .pg {
@@ -109,20 +115,49 @@ footer .container{
 }
 
 .pg .container {
-  height: 70vh;
+  height: 50vh;
   width: 100%;
   background-image: url("../assets/imgs/musica/img_tela_musica.jpeg");
   background-size: cover;
   background-position: center;
 }
 
-.musica {
-  color: white;
-
+.hero{
+  width: 100%;
+  height: 37vh;
+  background-image: url(../assets/imgs/home/fundo.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.musica .container {
-  flex-direction: column
+.music{
+  width: 90%;
+  padding: 30px;
+  background-color: rgba(14, 9, 9,0.74);
+  display: flex;
+}
+
+.music img{
+  width: 250px;
+}
+
+.music .info{
+  color: white;
+  margin-left: 30px;
+  flex: 1;
+}
+
+.music .info h2{
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.music .info p{
+  font-size: 20px;
+  margin: 10px 0 40px 0;
 }
 
 /* LOGIN */
@@ -153,8 +188,8 @@ main {
 }
 
 .tela .container .card_medio {
-  margin-top: 200px;
-  margin-left: 80px;
+  margin-top: 100px;
+  margin-left: 40px;
   background-color: #212124;
   width: 460px;
   height: 460px;
@@ -266,34 +301,34 @@ input {
   width: 50px;
 }
 
-/*  */
+/* barra lateral */
 
-a {
+.conteudo a {
   text-decoration: none;
   color: #e3b062;
 }
 
-ul{
+.conteudo ul{
   list-style: none;
   top: 105px;
   position: absolute;
   width: 100%;
 }
 
-input[type="checkbox"]:checked ~ nav{
+.conteudo input[type="checkbox"]:checked ~ nav{
   transform: translateX(350px);
 }
 
 #risco{
-  width: 320px;
+  width: 200px;
 }
 
-input[type="checkbox"]{
+.conteudo input[type="checkbox"]{
   display: none;
 }
 
 .nav{
-  background-color: #21212441;
+  background-color: black;
   width: 350px;
   left: -350px;
   height: 100vh;
@@ -311,7 +346,7 @@ input[type="checkbox"]{
   color: black;
 }
 
-label{
+.conteudo label{
   padding: 15px;
   position: absolute;
   z-index: 1;
@@ -325,7 +360,7 @@ label{
   left: 0;
   z-index: 999;
   height: 100vh;
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
