@@ -49,11 +49,108 @@
         <div class="music">
             <img src="./assets/imgs/musica/capa.jpg">
             <div class="info">
-                <h2>The Last of Us - <b id="nome"></b></h2>
-                <p>Album - The_Last_of_Us_part2</p>
+                <h2>The Last of Us - <i id="nome"></i></h2>
+                <p><i>Album - The_Last_of_Us_part2</i></p>
+
+                <div class="duracao">
+                    <div class="barra">
+                        <progress value="" max="1"></progress>
+                        <div class="ponto"></div>
+                    </div>
+                    <div class="tempo">
+                        <p class="inicio">0:00</p>
+                        <p class="fim">3:40</p>
+                    </div>
+                </div>
+                <div class="player">
+                    <img src="./assets/icon/rewind-button.png" class="setas anterior" onclick="">
+                    <img src="./assets/icon/jogar.png" class="botao-play" onclick="">
+                    <img src="./assets/icon/pausa.png" class="botao-pause" onclick="">
+                    <img src="./assets/icon/skip-button.png" class="setas proxima" onclick="">
+                </div>
+                <audio src="./musica/Take on Me.mp3"></audio>
             </div>
         </div>
     </div>
 </body>
-
 </html>
+
+<script>
+    let musicas = [
+        {titulo:'Take on me', src:'./musica/Take on Me.mp3'},
+        {titulo:'Through the Valley', src:'./musica/Through the Valley.mp3'},
+        {titulo:'True Faith', src:'./musica/True Faith.mp3'},
+        {titulo:'Wayfaring Stranger', src:'./musica/Wayfaring Stranger.mp3'}
+    ];
+
+    let musica = document.querySelector('audio');
+    let indexMusica = 0;
+    let duracaoMusica = document.querySelector('.fim');
+    let nomeMusica = document.querySelector('.info i');
+
+    renderizarMusica(indexMusica);
+
+
+    // Eventos
+    document.querySelector('.botao-play').addEventListener('click', tocarMusica);
+    document.querySelector('.botao-pause').addEventListener('click', pausarMusica);
+
+    musica.addEventListener('timeupdate', atualizarBarra);
+
+    document.querySelector('.anterior').addEventListener('click', () => {
+        indexMusica --;
+        if (indexMusica < 0){
+            indexMusica = 3;
+        }
+        renderizarMusica(indexMusica);
+    });
+
+    document.querySelector('.proxima').addEventListener('click', () => {
+        indexMusica ++;
+        if (indexMusica > 3){
+            indexMusica = 0;
+        }
+        renderizarMusica(indexMusica);
+    });
+
+
+    // Funções
+    function renderizarMusica(index){
+        musica.setAttribute('src', musicas[index].src);
+        musica.addEventListener('loadeddata', () => {
+            nomeMusica.textContent = musicas[index].titulo;
+            duracaoMusica.textContent = segundosParaMinutos(Math.floor(musica.duration));
+        });    
+    }
+
+    function tocarMusica(){
+        musica.play();
+        document.querySelector('.botao-pause').style.display = 'block';
+        document.querySelector('.botao-play').style.display = 'none';
+    }
+
+    function pausarMusica(){
+        musica.pause();
+        document.querySelector('.botao-pause').style.display = 'none';
+        document.querySelector('.botao-play').style.display = 'block';
+    }
+
+    function atualizarBarra(){
+        let barra = document.querySelector('progress');
+        barra.style.width = Math.floor((musica.currentTime / musica.duration) * 100) + '%';
+
+        let tempoDecorrido = document.querySelector('.inicio');
+        tempoDecorrido.textContent = segundosParaMinutos(Math.floor(musica.currentTime));
+    }
+
+    function segundosParaMinutos(segundos){
+        let campoMinutos = Math.floor(segundos / 60);
+        let campoSegundos = segundos % 60;
+
+        if (campoSegundos < 10){
+            campoSegundos = '0' + campoSegundos;
+        }
+
+        return campoMinutos+':'+campoSegundos;
+    }
+</script>
